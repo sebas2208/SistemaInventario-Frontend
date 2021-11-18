@@ -17,6 +17,10 @@ export class ServiceService {
     return this.http.get<Producto[]>(this.UrlProducto);
   }
 
+  getProducto(){
+    return this.http.get<Producto>('/');
+  }
+
   createProducto(producto:Producto){
     return this.http.post<Producto>(this.UrlProducto+'/nuevo',producto);
   }
