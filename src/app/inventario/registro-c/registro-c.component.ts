@@ -30,12 +30,22 @@ export class RegistroCComponent implements OnInit {
 editar(){
   this.numero=Number(this.elegido);
 
+
+  if(this.numero==0 || this.producto.precioCompra==null || this.producto.stock==null || this.producto.precioVenta==null ){
+    alert("Ingrese todos los datos")
+    
+  }else if(this.producto.precioCompra < 0 || this.producto.precioVenta < 0 || this.producto.stock < 0){
+    
+  alert("Ingrese datos númericos validos")
+
+  }else{
   this.service.updateProducto( this.producto,this.numero)
       .subscribe(data=>{
         alert("Se Actualizo con éxito");
         window.location.reload();
       
       })
+    }
 
 }
 
