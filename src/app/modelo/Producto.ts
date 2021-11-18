@@ -7,4 +7,8 @@ export class Producto{
 
     constructor(){}
     
+
+    public get cantidad() {
+        return this.stock;
+    }
 }

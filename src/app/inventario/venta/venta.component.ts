@@ -26,7 +26,14 @@ export class VentaComponent implements OnInit {
 
   Actualizar(){
     this.numero=Number(this.elegido);
-
+    if(this.numero==0 || this.producto.stock==null  ){
+      alert("Ingrese todos los datos")
+      
+    }else if(this.producto.stock < 0){
+      
+    alert("Ingrese datos númericos validos")
+  
+    }else{
     this.service.updateProducto( this.producto,this.numero)
         .subscribe(data=>{
           alert("Se Actualizo con éxito");
@@ -34,4 +41,5 @@ export class VentaComponent implements OnInit {
         
         })
       }  
+    }
 }

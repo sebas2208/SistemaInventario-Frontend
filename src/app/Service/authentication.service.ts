@@ -28,7 +28,7 @@ export class AuthenticationService {
   }
 
   credencialesInvalidas(error:HttpErrorResponse){
-    alert("Invalido")
+    alert("Datos incorrectos")
     return throwError(() => error)
   }
   
