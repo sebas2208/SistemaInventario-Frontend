@@ -1,41 +1,23 @@
-<app-menu></app-menu>
-  
-  <div class="content" role="main">
-  
-    <img  src="./assets/imagen.png" width="101.678" height="101.678" class="imagen" >
-  
-  <br>
-    <!-- Highlight Card -->
-    <div class="card highlight-card card-small">
-  
-      <span>Ingreso por compras</span>
-  
-   
-    </div>
-
-    <div class = "productos">
-        <div class ="table table-hover mitabla" >
-         <select  [(ngModel)]="elegido"  >
-           <option value="0">Seleccionar Producto</option>
-           <option [value]="producto.idProducto" *ngFor="let producto of productos">{{producto.nombre}}</option>
-           </select>
-           
-       </div>
- 
-     </div>
-
-      <div class ="formulario">
-         <form action="">
+<div class="content" role="main">
+  <app-menu></app-menu>
+  <div class = "registro-container text-c animated flipInX">
+    <h3 class="text-whitesmoke">Ingreso por compras</h3>
+    <div class ="container-content">
+        <select class="form-control" [(ngModel)]="elegido"  >
+          <option value="0">Seleccionar Producto</option>
+          <option [value]="producto.idProducto" *ngFor="let producto of productos">{{producto.nombre}}</option>
+        </select>
+        <form action="">
           <div class="form-group">
             <div>
-                <br> <br>  <br>
-               
-                <p>Cantidad del producto: <input type="number" class="form-control" name="cantidad"  required [(ngModel)]="producto.stock" > </p>
-                <p>Precio compra: <input type="number" class="form-control" name="precioCompra" required [(ngModel)]="producto.precioCompra"> </p>
-                <p>Precio venta: <input type="number" class="form-control" name="precioVenta" required [(ngModel)]="producto.precioVenta" > </p>
-                <button (click)="editar()" class="btn btn-danger">Registrar</button>
+                <p>
+                <p><input type="number" placeholder="Cantidad del producto" class="form-control" name="cantidad"  required [(ngModel)]="producto.stock" > </p>
+                <p><input type="number" placeholder="Precio compra" class="form-control" name="precioCompra" required [(ngModel)]="producto.precioCompra"> </p>
+                <p><input type="number" placeholder="Precio venta" class="form-control" name="precioVenta" required [(ngModel)]="producto.precioVenta" > </p>
+                <button (click)="editar()" class="form-button button-l margin-b">Registrar</button>
             </div>
           </div>
         </form>
-      </div>
     </div>
+  </div>
+</div>

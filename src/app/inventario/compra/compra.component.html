@@ -1,27 +1,12 @@
-<app-menu></app-menu>
-
 <div class="content" role="main">
-
-  <img  src="./assets/imagen.png" width="101.678" height="101.678" class="imagen" >
-  
-  <br>
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-    
-    
-
-  
-
-    <span>Ingreso por compras</span>
-
-   
-
+  <app-menu></app-menu>
+  <div class="productos">
+    <h2>Ingreso por compras</h2>
+    <div class="container-content">
+      <div class="divider"></div>
+      <button type="submit" (click)="Nuevo()" class="form-button button-l margin-b">Nuevo Producto</button>
+      <div class="divider"></div>
+      <button type="submit" (click)="Actualizar()" class="form-button button-l margin-b">Editar Producto</button>
+    </div>
   </div>
-
- <div>
-  <button (click)="Nuevo()" class="btn btn-danger">Nuevo Producto</button>
-  <br> <br>
-  <button (click)="Actualizar()" class="btn btn-danger">Editar Producto</button>
- </div>
-
-  
+</div>

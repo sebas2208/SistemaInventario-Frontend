@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import{ HttpClient} from '@angular/common/http'
 import { Producto } from '../modelo/Producto';
-import { Persona } from '../modelo/Persona';
+
 
 
 @Injectable({
@@ -17,8 +17,8 @@ export class ServiceService {
     return this.http.get<Producto[]>(this.UrlProducto);
   }
 
-  getProducto(){
-    return this.http.get<Producto>('/');
+  getProducto(id:number){
+    return this.http.get<Producto>(this.UrlProducto+'/'+id);
   }
 
   createProducto(producto:Producto){
@@ -27,4 +27,9 @@ export class ServiceService {
   updateProducto(producto:Producto,id:number){
     return this.http.patch<Producto>(this.UrlProducto+"/editar/"+id, producto);
   }
+
+  deleteProducto(id:number){
+    return this.http.delete<Producto>(this.UrlProducto+"/eliminar/"+id);
+  }
+ 
 }

@@ -14,7 +14,8 @@ import { AuthenticationService } from 'src/app/Service/authentication.service';
 
 export class LoginComponent implements OnInit {
   persona: Persona = new Persona();
-  usuario = 'javainuse'
+  persona1: Persona = new Persona();
+  usuario = ''
   contrasena = ''
   invalidLogin = false
 
@@ -23,22 +24,33 @@ export class LoginComponent implements OnInit {
    ngOnInit(): void {
 
    }
-
    ingresar(form: NgForm){
-     if(form.valid) {
-      this.service.login(this.persona).pipe(catchError(this.service.credencialesInvalidas)).subscribe(data =>{
-        console.log(data)
-        sessionStorage.setItem('usuario', this.persona.usuario)
-        this.router.navigate([""])
+    if(form.valid) {
+     this.service.login(this.persona).pipe(catchError(this.service.credencialesInvalidas)).subscribe(data =>{
+       console.log(data)
+   
+      this.service.verificarPersonaByName(this.persona.usuario).subscribe(data =>{
+        this.persona1=data
+
+        if(this.persona1.estado=="Nuevo"){
+          alert("Por favor cambie su contraseña")
+          this.router.navigate(["cambio-con"])
+         }else{
+          sessionStorage.setItem('usuario', this.persona.usuario)
+          this.router.navigate([""])
+         }
       })
-     } else {
-       alert("ERROR");
-     }
-   }
+      
+       
+     })
+    } else {
+      alert("ERROR");
+    }
+  }
 
 
    Registro(){
     this.router.navigate(["registro"])
   }
-  
+
 }

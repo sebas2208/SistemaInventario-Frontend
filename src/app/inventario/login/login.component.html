@@ -1,37 +1,21 @@
-
+<div class="main-bg">
   <app-menu></app-menu>
-  
-  <div class="content" role="main">
-  
-    <img  src="./assets/imagen.png" width="101.678" height="101.678" class="imagen" >
-  
-  <br>
-    <!-- Highlight Card -->
-    <div class="card highlight-card card-small">
-  
-      
-  
-      <span>LogIn</span>
-  
-    
-  
-    </div>
+  <div class="login-container text-c animated flipInX">
+              <h3 class="text-whitesmoke">Inicio de Sesión</h3>
+          <div class="container-content">
+              <form class="margin-t" #formLogin="ngForm" (ngSubmit)="ingresar(formLogin)">
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Usuario" autocomplete="off" name="usuario" [(ngModel)]="persona.usuario" required>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Contraseña" name="contrasena" [(ngModel)]="persona.contrasena" required>
+                  </div>
+                  <br>
+                  <button type="submit" class="form-button button-l margin-b">Iniciar Sesión</button>
 
-    <div class = "login">
-       
-      <div class ="formulario">
-         <form #formLogin="ngForm" (ngSubmit)="ingresar(formLogin)">
-          <div class="form-group">
-            <div>
-                <p>Usuario: <input type="text" class="form-control" name="usuario" [(ngModel)]="persona.usuario" required> </p>
-                <p>Contrasena: <input type="password" class="form-control" name="contrasena" [(ngModel)]="persona.contrasena" required> </p>
-                <!--<re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" ></re-captcha>-->
-                <button type="submit" class="btn btn-success" >Iniciar sesión</button>
-                <p></p>
-                <button (click)=Registro() class="btn btn-outline-success">Registrar</button>
-                
-            </div>
+                  <a class="text-darkyellow" (click)=Registro()><small>Registrar</small></a>
+              </form>
           </div>
-        </form>
       </div>
-    </div>
+</div>

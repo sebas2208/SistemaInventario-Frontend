@@ -1,9 +1,12 @@
 export class Persona{
-    id!:number;
+    idUsuario!:number;
+    nombre!:String;
+    apellido!:String;
+    correo!:String;
     usuario!:string;
     contrasena!:String;
-    cargo!:String;
-    
-    
+    estado!:String;
+    cargo!:number;
+
     constructor(){}
 }

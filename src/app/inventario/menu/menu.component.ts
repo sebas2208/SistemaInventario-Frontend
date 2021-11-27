@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/Service/authentication.service';
 import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
@@ -11,12 +12,21 @@ export class MenuComponent implements OnInit {
 
   isLogged = false;
 
-  constructor(private router:Router, private service:ServiceService) { }
+  constructor(private router:Router, private service:ServiceService, private auth:AuthenticationService) { }
 
-  ngOnInit() {  }
+  ngOnInit() { 
+    if(this.auth.isUserLoggedIn()){
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+   }
 
   CerrarSesion(){
     this.router.navigate(["logout"])
+  }
+  ManejoUsuario(){
+    this.router.navigate(["manejo-usuario"])
   }
 
   onLogOut(): void {

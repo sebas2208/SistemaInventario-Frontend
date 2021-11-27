@@ -31,13 +31,32 @@ export class AuthenticationService {
     alert("Datos incorrectos")
     return throwError(() => error)
   }
-  
+
+  usuarioInvalido(error:HttpErrorResponse){
+    alert("Usuario ya en uso")
+    return throwError(() => error)
+  }
+
 
   getPersonas(){
     return this.http.get<Persona[]>(this.Url);
   }
 
-  createPersona(persona:Persona){
-    return this.http.post<Persona>(this.Url,persona);
+  verificarPersonaByName(usuario:String){
+    return this.http.get<Persona>(this.Url+"/"+usuario)
   }
+
+  createPersona(persona:Persona){
+    return this.http.post<Persona>(this.Url+"/nuevo",persona);
+  }
+  updatePersona(id:number,persona:Persona) {
+    return this.http.patch<Persona>(this.Url+"/editar/"+id, persona);
+  }
+  
+  eliminarPersona(id:number){
+    return this.http.delete<Persona>(this.Url+"/eliminar/"+id);
+
+  }
+
+
 }
